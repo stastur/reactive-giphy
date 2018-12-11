@@ -15,6 +15,7 @@ const StyledLink = styled(Link)`
 class GifsBoard extends Component {
   shouldComponentUpdate(nextProps) {
     return (
+      !this.props.gifs.length ||
       this.props.gifs.length !== nextProps.gifs.length ||
       this.props.gifs[0].id !== nextProps.gifs[0].id
     )
