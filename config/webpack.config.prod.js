@@ -7,7 +7,7 @@ module.exports = {
   mode: 'production',
   entry: ['@babel/polyfill', './src/index.js'],
   output: {
-    path: __dirname + '/../build',
+    path: __dirname + '/../docs',
     filename: 'static/js/bundle.js'
   },
   optimization: {
@@ -37,7 +37,7 @@ module.exports = {
     ]
   },
   plugins: [
-    new CleanWebpackPlugin(['build'], { root: __dirname + '/../' }),
+    new CleanWebpackPlugin(['docs'], { root: __dirname + '/../' }),
     new LodashModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
       template: './public/index.html'
