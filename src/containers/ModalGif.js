@@ -9,6 +9,7 @@ const ModalContainer = styled.div`
   left: 0;
   top: 0;
   position: fixed;
+  z-index: 10000;
   display: flex;
   flex-direction: column;
   justify-content: center;

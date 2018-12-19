@@ -5,6 +5,8 @@ import Image from './Image'
 const Label = styled.span`
   position: absolute;
   z-index: 1;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000;
 `
 
 const CategoryWithGif = props => {
