@@ -4,34 +4,34 @@ import settings from '../settings'
 
 const client = new GphApiClient(key)
 
-async function getTrending(type = 'gifs', opts = {}) {
-  return await client.trending(type, { ...opts, limit: settings.gifsToLoad })
+function getTrending(type = 'gifs', opts = {}) {
+  return client.trending(type, { ...opts, limit: settings.gifsToLoad })
 }
 
-async function getCategories(opts = { limit: 500 }) {
-  return await client.categoriesForGifs(opts)
+function getCategories(opts = { limit: 500 }) {
+  return client.categoriesForGifs(opts)
 }
 
-async function getSubcategoriesByCategory(category, opts = { limit: 500 }) {
-  return await client.subCategoriesForGifs(category, {
+function getSubcategoriesByCategory(category, opts = { limit: 500 }) {
+  return client.subCategoriesForGifs(category, {
     ...opts,
     limit: settings.gifsToLoad
   })
 }
 
-async function getSubcategoryContent(category, subcategory, opts = {}) {
-  return await client.gifsByCategories(category, subcategory, {
+function getSubcategoryContent(category, subcategory, opts = {}) {
+  return client.gifsByCategories(category, subcategory, {
     ...opts,
     limit: settings.gifsToLoad
   })
 }
 
-async function getGifById(id) {
-  return await client.gifByID(id)
+function getGifById(id) {
+  return client.gifByID(id)
 }
 
-async function search(opts = { q: '' }) {
-  return await client.search('gifs', { ...opts, limit: settings.gifsToLoad })
+function search(opts = { q: '' }) {
+  return client.search('gifs', { ...opts, limit: settings.gifsToLoad })
 }
 
 export default {
