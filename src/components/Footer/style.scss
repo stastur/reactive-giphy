@@ -1,0 +1,19 @@
+@import '../../theme/colors.scss';
+@import '../../theme/shared/link.scss';
+
+.source-link {
+  @extend .link;
+  font-size: 1.2em;
+}
+
+.footer {
+  padding: 1em 0;
+  & a {
+    @extend .link;
+    padding: 0 5px;
+
+    &:after {
+      content: '';
+    }
+  }
+}

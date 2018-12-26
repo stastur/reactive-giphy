@@ -2,6 +2,11 @@ const MinifyPlugin = require('babel-minify-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+
+const extractCss = new ExtractTextPlugin('static/css/normalize.css')
+const extractScss = new ExtractTextPlugin('static/css/styles.css')
 
 module.exports = {
   mode: 'production',
@@ -14,12 +19,12 @@ module.exports = {
     splitChunks: {
       chunks: 'all'
     },
-    minimizer: [new MinifyPlugin()]
+    minimizer: [new MinifyPlugin(), new OptimizeCSSAssetsPlugin()]
   },
   module: {
     rules: [
       {
-        exclude: /\.(js|html|css|jsx)$/,
+        exclude: /\.(js|html|css|scss|jsx)$/,
         loader: 'file-loader',
         options: {
           name: 'static/media/[name].[ext]'
@@ -31,8 +36,25 @@ module.exports = {
         use: 'babel-loader'
       },
       {
+        test: /\.scss$/,
+        use: extractScss.extract({
+          use: [
+            {
+              loader: 'css-loader',
+              options: {
+                minimize: true,
+                sourceMap: true
+              }
+            },
+            'sass-loader'
+          ]
+        })
+      },
+      {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader']
+        use: extractCss.extract({
+          use: ['css-loader']
+        })
       }
     ]
   },
@@ -41,6 +63,8 @@ module.exports = {
     new LodashModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
       template: './public/index.html'
-    })
+    }),
+    extractCss,
+    extractScss
   ]
 }

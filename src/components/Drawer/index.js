@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
-import styled from 'styled-components'
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer'
-import colors from '../assets/colors'
+import './style.scss'
 
 const Drawer = props => {
   const [isOpen, setIsOpen] = useState(false)
@@ -16,9 +15,4 @@ const Drawer = props => {
   )
 }
 
-export default styled(Drawer)`
-  background-color: ${colors.background};
-  padding: 1em;
-  height: inherit;
-  border-right: 1px solid ${colors.primary};
-`
+export default Drawer

@@ -1,0 +1,15 @@
+@import '../../theme/shared/link.scss';
+@import '../../theme/colors.scss';
+
+.categories-link {
+  @extend .link;
+  &:after {
+    content: '';
+  }
+}
+
+body {
+  font-family: Montserrat, Arial, Helvetica, sans-serif;
+  background-color: $background;
+  color: $fontColor;
+}

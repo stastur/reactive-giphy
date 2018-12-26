@@ -1,33 +1,5 @@
 import React, { useState } from 'react'
-import styled from 'styled-components'
-import colors from '../assets/colors'
-
-const LoadingIndicator = styled.div`
-  position: absolute;
-  height: 0.5em;
-  bottom: 0;
-  left: 0;
-  width: 10%;
-  display: ${({ show }) => (show ? 'block' : 'none')};
-  background-color: ${colors.primary};
-  animation: loading 0.5s linear infinite;
-
-  @keyframes loading {
-    to {
-      left: 90%;
-    }
-  }
-`
-
-const Container = styled.div`
-  display: flex;
-  position: relative;
-  flex-direction: column;
-  width: 100%;
-  & img {
-    width: inherit;
-  }
-`
+import './style.scss'
 
 const useGif = ({ images }, setLoading) => {
   const { fixed_width, fixed_width_still } = images
@@ -48,7 +20,7 @@ const Image = props => {
   const [gif, toggleGif] = useGif(props.gif, setLoading)
 
   return (
-    <Container>
+    <div className="gif-container">
       <img
         onMouseOver={toggleGif}
         onMouseLeave={toggleGif}
@@ -56,8 +28,11 @@ const Image = props => {
         src={gif}
         alt={title}
       />
-      <LoadingIndicator show={loading} />
-    </Container>
+      <div
+        className="loading-indicator"
+        style={{ display: `${loading ? 'block' : 'none'}` }}
+      />
+    </div>
   )
 }
 

@@ -1,11 +1,11 @@
 import React from 'react'
-import styled from 'styled-components'
 import uuid from 'uuid/v4'
-import CategoryWithGif from './CategoryWithGif'
+import CategoryWithGif from '../CategoryWithGif'
+import './style.scss'
 
-const Categories = props => {
+const CategoriesView = props => {
   return (
-    <div className={props.className}>
+    <div className="table-view">
       {props.categories.map(item => (
         <CategoryWithGif
           onSelect={() => props.onSelect(item)}
@@ -17,8 +17,4 @@ const Categories = props => {
   )
 }
 
-export default styled(Categories)`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-`
+export default CategoriesView

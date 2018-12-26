@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
+import './style.scss'
 
 const Clipboard = props => {
   const onClick = e => {
@@ -12,17 +12,10 @@ const Clipboard = props => {
     document.body.removeChild(temp)
   }
   return (
-    <div className={props.className} onClick={onClick}>
+    <div className="copy-field" onClick={onClick}>
       copy
     </div>
   )
 }
 
-export default styled(Clipboard)`
-  position: absolute;
-  z-index: 2;
-  text-align: center;
-  width: 100%;
-  background: linear-gradient(#000, transparent);
-  cursor: pointer;
-`
+export default Clipboard

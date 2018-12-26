@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { withRouter } from 'react-router-dom'
-import Giphy from '../services/giphyService'
-import ModalGif from '../containers/ModalGif'
-import GifsBoard from './GifsBoard'
-import settings from '../settings'
+import Giphy from '../../services/giphyService'
+import ModalGif from '../ModalGif'
+import GifsBoard from '../GifsBoard'
+import settings from '../../settings'
 
 const useEffectOnScrollToBottom = (q, effect) => {
   const [offset, setOffset] = useState(settings.gifsToLoad)
@@ -44,7 +44,7 @@ const SearchResults = props => {
     return (
       <>
         <GifsBoard gifs={data} />
-        {props.match.params.id ? <ModalGif id={props.match.params.id} /> : null}
+        {props.match.params.id && <ModalGif id={props.match.params.id} />}
       </>
     )
   }

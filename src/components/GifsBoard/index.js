@@ -1,28 +1,10 @@
 import React, { Component } from 'react'
-import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import Masonry from 'react-masonry-component'
 import uuid from 'uuid/v4'
-import Image from './Image'
-import Clipboard from './Clipboard'
-
-const StyledLink = styled(Link)`
-  text-decoration: none;
-  display: block;
-  width: 300px;
-`
-
-const Container = styled.div`
-  margin: 10px;
-
-  & > div {
-    display: none;
-  }
-
-  &:hover > div {
-    display: block;
-  }
-`
+import Image from '../Image'
+import Clipboard from '../Clipboard'
+import './style.scss'
 
 class GifsBoard extends Component {
   shouldComponentUpdate(nextProps) {
@@ -36,12 +18,12 @@ class GifsBoard extends Component {
   render() {
     const { gifs } = this.props
     const childElements = gifs.map(item => (
-      <Container key={uuid()}>
+      <div className="gifs-board" key={uuid()}>
         <Clipboard>{item.images.original.url}</Clipboard>
-        <StyledLink to={`${item.id}`}>
+        <Link to={`${item.id}`}>
           <Image withClipboard gif={item} />
-        </StyledLink>
-      </Container>
+        </Link>
+      </div>
     ))
     return <Masonry>{childElements}</Masonry>
   }

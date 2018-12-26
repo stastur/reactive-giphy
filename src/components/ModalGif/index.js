@@ -1,28 +1,7 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router'
-import styled from 'styled-components'
-import Giphy from '../services/giphyService'
-
-const ModalContainer = styled.div`
-  width: 100vw;
-  height: 100vh;
-  left: 0;
-  top: 0;
-  position: fixed;
-  z-index: 10000;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.9);
-  cursor: pointer;
-`
-
-const ModalImage = styled.img`
-  object-fit: contain;
-  height: 80%;
-  width: 80%;
-`
+import Giphy from '../../services/giphyService'
+import './style.scss'
 
 class ModalGif extends Component {
   state = {
@@ -39,9 +18,12 @@ class ModalGif extends Component {
 
   render() {
     return (
-      <ModalContainer onClick={e => this.props.history.push('.')}>
+      <div
+        className="modal-container"
+        onClick={e => this.props.history.push('.')}
+      >
         {this.state.gif ? (
-          <ModalImage
+          <img
             src={this.state.gif.images.original.url}
             alt={this.state.gif.title}
             onLoad={this.stopLoading}
@@ -49,7 +31,7 @@ class ModalGif extends Component {
         ) : (
           <h1>loading...</h1>
         )}
-      </ModalContainer>
+      </div>
     )
   }
 }

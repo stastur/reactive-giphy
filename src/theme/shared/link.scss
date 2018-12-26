@@ -1,0 +1,12 @@
+@import '../colors.scss';
+
+.link {
+  text-decoration: none;
+  color: $fontColor;
+  &:hover {
+    color: $primary;
+  }
+  &:after {
+    content: '/';
+  }
+}

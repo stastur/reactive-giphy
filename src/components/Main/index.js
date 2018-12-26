@@ -1,9 +1,9 @@
 import React from 'react'
 import { Switch, Route } from 'react-router'
-import GifsContainer from '../containers/GifsContainer'
-import SearchResults from './SearchResults'
-import { CategoriesPage, SubcategoriesPage } from '../pages'
-import Greeting from './Greeting'
+import GifsContainer from '../../containers/GifsContainer'
+import SearchResults from '../SearchResults'
+import { CategoriesPage, SubcategoriesPage } from '../../pages'
+import Greeting from '../Greeting'
 
 const Main = props => {
   return (

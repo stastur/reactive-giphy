@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import GifsBoard from '../components/GifsBoard'
 import { getGifs } from '../store/selectors/gifs'
 import * as gifsActions from '../store/actions/gifs'
-import ModalGif from './ModalGif'
+import ModalGif from '../components/ModalGif'
 import settings from '../settings'
 
 class GifsContainer extends Component {
@@ -43,9 +43,9 @@ class GifsContainer extends Component {
     return (
       <>
         <GifsBoard gifs={gifs} />
-        {this.props.match.params.id ? (
+        {this.props.match.params.id && (
           <ModalGif id={this.props.match.params.id} />
-        ) : null}
+        )}
       </>
     )
   }
