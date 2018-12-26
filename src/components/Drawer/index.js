@@ -10,7 +10,7 @@ const Drawer = props => {
       onClose={() => setIsOpen(false)}
       onOpen={() => setIsOpen(true)}
     >
-      <div className={props.className}>{props.children}</div>
+      <div className="drawer-content">{props.children}</div>
     </SwipeableDrawer>
   )
 }
