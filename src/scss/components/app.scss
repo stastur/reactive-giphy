@@ -3,9 +3,6 @@
 
 .categories-link {
   @extend .link;
-  &:after {
-    content: '';
-  }
 }
 
 body {
