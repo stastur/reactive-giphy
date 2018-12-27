@@ -1,0 +1,7 @@
+@import '../shared/link.scss';
+@import '../shared/colors.scss';
+
+.breadcrumb {
+  @extend .link;
+  font-size: 1.2em;
+}

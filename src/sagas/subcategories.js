@@ -1,11 +1,14 @@
 import { call, put, takeLatest } from 'redux-saga/effects'
 import actionTypes from '../store/utils/actionTypes'
-import GiphyApi from '../services/giphyService'
+import { giphyService } from '../services/giphyService'
 import * as actions from '../store/actions/subcategories'
 
 function* subcategoriesFetcher({ payload }) {
   try {
-    const { data } = yield call(GiphyApi.getSubcategoriesByCategory, payload)
+    const { data } = yield call(
+      giphyService.getSubcategoriesByCategory,
+      payload
+    )
     const response = {
       data,
       category: payload

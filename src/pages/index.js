@@ -1,7 +1,7 @@
 import React from 'react'
-import CategoriesContainer from '../containers/CategoriesContainer'
-import CategoriesView from '../components/CategoriesView'
-import SubcategoriesContainer from '../containers/SubcategoriesContainer'
+import CategoriesContainer from '../containers/categoriesContainer'
+import CategoriesView from '../components/categoriesView'
+import SubcategoriesContainer from '../containers/subcategoriesContainer'
 
 const wrapWith = Container => () => (
   <Container>

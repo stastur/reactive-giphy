@@ -4,8 +4,8 @@ import { Provider } from 'react-redux'
 import { HashRouter } from 'react-router-dom'
 import 'normalize.css'
 import { configureStore } from './store/configureStore'
-import App from './components/App'
-import ErrorBoundary from './containers/ErrorBoundary'
+import App from './components/app'
+import ErrorBoundary from './containers/errorBoundary'
 
 const store = configureStore()
 

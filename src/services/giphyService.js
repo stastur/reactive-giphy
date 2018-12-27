@@ -1,44 +1,48 @@
 import GphApiClient from 'giphy-js-sdk-core'
-import key from './key'
-import settings from '../settings'
+import { key } from './key'
 
-const client = new GphApiClient(key)
+class GiphyService {
+  constructor(key, props) {
+    const { type, limit } = props
+    this.client = new GphApiClient(key)
+    this.type = type
+    this.limit = limit
+  }
 
-function getTrending(type = 'gifs', opts = {}) {
-  return client.trending(type, { ...opts, limit: settings.gifsToLoad })
+  getTrending = (opts = {}) => {
+    return this.client.trending(this.type, { limit: this.limit, ...opts })
+  }
+
+  getCategories = () => {
+    return this.client.categoriesForGifs({ limit: 500 })
+  }
+
+  getSubcategoriesByCategory = (category, opts = { limit: 500 }) => {
+    return this.client.subCategoriesForGifs(category, {
+      limit: this.limit,
+      ...opts
+    })
+  }
+
+  getSubcategoryContent = (category, subcategory, opts = {}) => {
+    return this.client.gifsByCategories(category, subcategory, {
+      limit: this.limit,
+      ...opts
+    })
+  }
+
+  getGifById = id => {
+    return this.client.gifByID(id)
+  }
+
+  search = (opts = { q: '' }) => {
+    return this.client.search(this.type, { limit: this.limit, ...opts })
+  }
 }
 
-function getCategories(opts = { limit: 500 }) {
-  return client.categoriesForGifs(opts)
-}
+const giphyService = new GiphyService(key, {
+  limit: 50,
+  type: 'gifs'
+})
 
-function getSubcategoriesByCategory(category, opts = { limit: 500 }) {
-  return client.subCategoriesForGifs(category, {
-    ...opts,
-    limit: settings.gifsToLoad
-  })
-}
-
-function getSubcategoryContent(category, subcategory, opts = {}) {
-  return client.gifsByCategories(category, subcategory, {
-    ...opts,
-    limit: settings.gifsToLoad
-  })
-}
-
-function getGifById(id) {
-  return client.gifByID(id)
-}
-
-function search(opts = { q: '' }) {
-  return client.search('gifs', { ...opts, limit: settings.gifsToLoad })
-}
-
-export default {
-  search,
-  getGifById,
-  getTrending,
-  getCategories,
-  getSubcategoriesByCategory,
-  getSubcategoryContent
-}
+export { giphyService }

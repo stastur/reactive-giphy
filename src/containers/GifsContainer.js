@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import GifsBoard from '../components/GifsBoard'
+import GifsBoard from '../components/gifsBoard'
 import { getGifs } from '../store/selectors/gifs'
 import * as gifsActions from '../store/actions/gifs'
-import ModalGif from '../components/ModalGif'
-import settings from '../settings'
+import ModalGif from '../components/modalGif'
+import { giphyService } from '../services/giphyService'
 
 class GifsContainer extends Component {
   state = {
@@ -17,7 +17,7 @@ class GifsContainer extends Component {
     let scrolled = window.scrollY + window.innerHeight
     if (document.body.scrollHeight === scrolled) {
       this.setState(prevState => ({
-        offset: prevState.offset + settings.gifsToLoad
+        offset: prevState.offset + giphyService.limit
       }))
       this.props.loadContent({
         category,
@@ -55,6 +55,7 @@ const mapStateToProps = state => ({ gifs: getGifs(state) })
 const mapDispatchToProps = {
   loadContent: gifsActions.loadGifsRequest
 }
+
 export default connect(
   mapStateToProps,
   mapDispatchToProps

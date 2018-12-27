@@ -1,13 +1,13 @@
 import { call, put, takeEvery } from 'redux-saga/effects'
 import actionTypes from '../store/utils/actionTypes'
-import GiphyApi from '../services/giphyService'
+import { giphyService } from '../services/giphyService'
 import * as actions from '../store/actions/gifs'
 
 function* gifsFetcher({ payload }) {
   try {
     const { category, subcategory, offset } = payload
     const { data, pagination } = yield call(
-      GiphyApi.getSubcategoryContent,
+      giphyService.getSubcategoryContent,
       category,
       subcategory,
       { offset }
