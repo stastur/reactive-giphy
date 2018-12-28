@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
-import * as gifsActions from '../store/actions/gifs'
+
 import { getSubcategories } from '../store/selectors/subcategories'
+import * as gifsActions from '../store/actions/gifs'
 import * as subCatActions from '../store/actions/subcategories'
 
 class SubcategoriesContainer extends Component {
@@ -21,12 +22,12 @@ class SubcategoriesContainer extends Component {
   render() {
     const { subcategories } = this.props
 
-    const child = React.Children.map(this.props.children, child => {
-      return React.cloneElement(child, {
+    const child = React.Children.map(this.props.children, item =>
+      React.cloneElement(item, {
         onSelect: this.handleClick,
         categories: subcategories.data
       })
-    })
+    )
 
     return <>{child}</>
   }

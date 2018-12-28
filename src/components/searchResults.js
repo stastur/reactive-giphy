@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import { withRouter } from 'react-router-dom'
-import { giphyService } from '../services/giphyService'
+
 import ModalGif from './modalGif'
 import GifsBoard from './gifsBoard'
+import { giphyService } from '../services/giphyService'
 
 const useEffectOnScrollToBottom = (q, effect) => {
   const [offset, setOffset] = useState(giphyService.limit)
 
   useEffect(() => {
     const listener = () => {
-      let scrolled = window.scrollY + window.innerHeight
+      const scrolled = window.scrollY + window.innerHeight
       if (document.body.scrollHeight === scrolled) {
         giphyService.search({ q, offset }).then(({ data }) => {
           effect(data)
@@ -33,7 +34,7 @@ const SearchResults = props => {
 
   useEffect(
     () => {
-      let q = props.match.params.searchQuery
+      const q = props.match.params.searchQuery
       giphyService.search({ q }).then(({ data }) => setData(data))
     },
     [props.match.params.searchQuery]

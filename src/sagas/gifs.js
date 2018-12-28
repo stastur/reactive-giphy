@@ -1,7 +1,8 @@
 import { call, put, takeEvery } from 'redux-saga/effects'
+
 import actionTypes from '../store/utils/actionTypes'
-import { giphyService } from '../services/giphyService'
 import * as actions from '../store/actions/gifs'
+import { giphyService } from '../services/giphyService'
 
 function* gifsFetcher({ payload }) {
   try {

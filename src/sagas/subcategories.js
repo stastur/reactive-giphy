@@ -1,7 +1,8 @@
 import { call, put, takeLatest } from 'redux-saga/effects'
+
 import actionTypes from '../store/utils/actionTypes'
-import { giphyService } from '../services/giphyService'
 import * as actions from '../store/actions/subcategories'
+import { giphyService } from '../services/giphyService'
 
 function* subcategoriesFetcher({ payload }) {
   try {

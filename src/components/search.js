@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { withRouter } from 'react-router'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import faSearch from '@fortawesome/fontawesome-free-solid/faSearch'
+
 import '../scss/components/search.scss'
 
 const useInput = initial => {
@@ -15,7 +16,7 @@ const useInput = initial => {
 const Search = props => {
   const [value, onInputChange] = useInput('')
 
-  const onSubmit = e => {
+  const onSubmit = () => {
     value && props.history.push(`/search/${value}/`)
   }
 

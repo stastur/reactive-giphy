@@ -1,4 +1,5 @@
 import React from 'react'
+
 import '../scss/components/clipboard.scss'
 
 const Clipboard = props => {
