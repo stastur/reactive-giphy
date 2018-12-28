@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+
 import '../scss/components/image.scss'
 
 const useGif = ({ images }, setLoading) => {
@@ -23,6 +24,7 @@ const Image = props => {
     <div className="gif-container">
       <img
         onMouseOver={toggleGif}
+        onFocus={toggleGif}
         onMouseLeave={toggleGif}
         onLoad={() => setLoading(false)}
         src={gif}

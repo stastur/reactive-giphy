@@ -1,5 +1,5 @@
-import { defaultMemoize, createSelectorCreator } from 'reselect'
 import isEqual from 'lodash.isequal'
+import { defaultMemoize, createSelectorCreator } from 'reselect'
 
 const deepEqualityCheck = (a, b) => isEqual(a, b)
 

@@ -1,8 +1,9 @@
 import { call, put, takeLatest } from 'redux-saga/effects'
-import actionTypes from '../store/utils/actionTypes'
-import { giphyService } from '../services/giphyService'
-import * as actions from '../store/actions/categories'
 
+import { giphyService } from '../services/giphyService'
+import actionTypes from '../store/utils/actionTypes'
+import * as actions from '../store/actions/categories'
+ 
 function* categoriesFetcher() {
   try {
     const { data } = yield call(giphyService.getCategories, 'gifs')

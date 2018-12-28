@@ -1,11 +1,10 @@
 import { handleActions } from 'redux-actions'
+
 import actionTypes from '../utils/actionTypes'
 
 const initialState = []
 
-const loadCategoriesSuccess = (state, { payload }) => {
-  return [...payload]
-}
+const loadCategoriesSuccess = (state, { payload }) => [...payload]
 
 export default handleActions(
   {

@@ -1,30 +1,15 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+
 import GifsBoard from '../components/gifsBoard'
-import { getGifs } from '../store/selectors/gifs'
-import * as gifsActions from '../store/actions/gifs'
 import ModalGif from '../components/modalGif'
+import * as gifsActions from '../store/actions/gifs'
+import { getGifs } from '../store/selectors/gifs'
 import { giphyService } from '../services/giphyService'
 
 class GifsContainer extends Component {
   state = {
     offset: 0
-  }
-
-  listener = () => {
-    const category = this.props.match.params.category
-    const subcategory = this.props.match.params.subcat
-    let scrolled = window.scrollY + window.innerHeight
-    if (document.body.scrollHeight === scrolled) {
-      this.setState(prevState => ({
-        offset: prevState.offset + giphyService.limit
-      }))
-      this.props.loadContent({
-        category,
-        subcategory,
-        offset: this.state.offset
-      })
-    }
   }
 
   componentDidMount() {
@@ -36,6 +21,22 @@ class GifsContainer extends Component {
 
   componentWillUnmount() {
     window.removeEventListener('scroll', this.listener)
+  }
+
+  listener = () => {
+    const category = this.props.match.params.category
+    const subcategory = this.props.match.params.subcat
+    const scrolled = window.scrollY + window.innerHeight
+    if (document.body.scrollHeight === scrolled) {
+      this.setState(prevState => ({
+        offset: prevState.offset + giphyService.limit
+      }))
+      this.props.loadContent({
+        category,
+        subcategory,
+        offset: this.state.offset
+      })
+    }
   }
 
   render() {

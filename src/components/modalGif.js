@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router'
+
 import { giphyService } from '../services/giphyService'
 import '../scss/components/modalGif.scss'
 
@@ -7,6 +8,7 @@ class ModalGif extends Component {
   state = {
     gif: null
   }
+
   async componentDidMount() {
     try {
       const response = await giphyService.getGifById(this.props.id)
@@ -20,7 +22,7 @@ class ModalGif extends Component {
     return (
       <div
         className="modal-container"
-        onClick={e => this.props.history.push('.')}
+        onClick={() => this.props.history.push('.')}
       >
         {this.state.gif ? (
           <img

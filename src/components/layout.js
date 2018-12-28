@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
 import Media from 'react-media'
+
 import Drawer from './drawer'
 import breakpoints from '../assets/breakpoints'
 import '../scss/components/layout.scss'
 
 class Layout extends Component {
-  state = {
-    mobileView: false
-  }
   static Header = ({ children }) => <header>{children}</header>
+
   static Main = ({ children }) => <main>{children}</main>
+
   static Aside = ({ children }) => (
     <Media query={`(max-width: ${breakpoints.medium})`}>
       {matches => {
