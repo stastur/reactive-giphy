@@ -7,7 +7,7 @@
     "start": "webpack-dev-server --config config/webpack.config.dev.js --open --hot --port 3000",
     "build": "webpack --config config/webpack.config.prod.js ",
     "build-optimizer": "webpack --config config/webpack.config.prod.js --json > stats.json",
-    "deploy": "yarn build && gh-pages -d build",
+    "deploy": "npm run build && gh-pages -d build",
     "lint": "eslint src/ --fix"
   },
   "keywords": [],
