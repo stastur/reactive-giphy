@@ -1,0 +1,29 @@
+@import '../shared/colors.scss';
+
+.search {
+  display: flex;
+  justify-content: center;
+  padding: 0.5em;
+  height: -webkit-fill-available;
+
+  .btn {
+    display: flex;
+    color: $fontColor;
+    outline: none;
+    border: none;
+    width: 2em;
+    justify-content: center;
+    align-items: center;
+    background-color: #0ff;
+    cursor: pointer;
+  }
+
+  .input {
+    border: none;
+    box-sizing: border-box;
+    background: #fff;
+    outline: none;
+    width: 10em;
+    padding: 0 1em;
+  }
+}

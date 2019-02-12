@@ -1,0 +1,14 @@
+@import '../shared/colors.scss';
+
+.categories-list {
+  list-style: none;
+  padding: 0;
+
+  & li {
+    padding: 2px 0;
+    cursor: pointer;
+  }
+  & li:hover {
+    color: $primary;
+  }
+}

@@ -1,0 +1,8 @@
+@import '../shared/colors.scss';
+
+.drawer-content {
+  background-color: $background;
+  padding: 1em;
+  height: inherit;
+  border-right: 1px solid $primary;
+}
