@@ -1,1 +1,1 @@
-deployed: https://stastur.github.io/reactive-giphy/
+Deployed: https://stastur.github.io/reactive-giphy/
