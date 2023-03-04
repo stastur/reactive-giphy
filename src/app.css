@@ -9,7 +9,7 @@
 	@font-face {
 		font-family: 'Montserrat';
 		font-weight: 400;
-		src: url(./Montserrat-Medium.ttf);
+		src: url(/Montserrat-Medium.ttf);
 	}
 
 	a:hover {
